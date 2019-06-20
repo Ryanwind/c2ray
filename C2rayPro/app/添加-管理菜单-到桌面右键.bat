@@ -58,7 +58,7 @@ del /q dkey.reg
 
 echo.
 echo.
-echo 卸载成功。
+echo. 卸载成功。
 ping localhost -n 2 1>nul 2>nul
 goto begin
 
@@ -78,6 +78,6 @@ del /q rkey.reg
 
 echo.
 echo.
-echo 安装成功。
+echo. 安装成功。
 ping localhost -n 2 1>nul 2>nul
 goto begin
