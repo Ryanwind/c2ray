@@ -54,7 +54,7 @@ echo.
 echo.              当前状态::%on2off%
 echo.         ===== socks5 监听端口 1080 =====
 echo.
-echo.   --[1]--启动/切换%sc-name%配置并隐藏窗口(%exe-name%)
+echo.   --[1]--启动/切换%sc-name%线路并隐藏窗口(%exe-name%)
 echo.   --[2]--临时启动并显示进程窗口(%cmd-name%)
 echo.
 echo.   --[3]--安装开机自启动服务（管理员权限）
