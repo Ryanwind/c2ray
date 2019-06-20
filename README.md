@@ -8,10 +8,7 @@ C2ray 一个极简的 Project V 客户端
 ```
 使用需要对 V2ray 有一定的了解，无打扰后台静默运行 适合拥有长期稳定线路或者私人自建机场的老鸟使用。
 
-
-![menu](https://raw.githubusercontent.com/dylanbai8/c2ray/master/menu.jpg)
-
-
+<img src="https://raw.githubusercontent.com/dylanbai8/c2ray/master/menu.jpg" width="50%">
 
 ## 相关项目：
 
