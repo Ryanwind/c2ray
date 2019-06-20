@@ -8,10 +8,41 @@ https://github.com/dylanbai8
 项目地址：
 https://github.com/dylanbai8/c2ray
 
-c2ray教程：
+关联项目：
 https://github.com/dylanbai8/c2ray_step_by_step
 v2ray教程：
 https://github.com/dylanbai8/v2ray_step_by_step
+
+
+
+如何配置系统全局代理（IE代理、http代理）：
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+仅安装v2ray是无法科学上网的，你需要配合socks5代理或者http代理将浏览器或其它软件流量转发至v2ray。
+
+大多数情况下，推荐使用chrome配合SwitchyOmega插件来科学上网。
+如果你不得不使用ie或者其它一些不支持socks5的上网软件时，则需要配置系统全局代理（IE代理、http代理）。
+
+以下是教程：
+1.首先需要确认你使用的v2ray配置文件（config.json）已开启http代理，且端口为1087。开启方法：
+在   "inbounds": [   下方加入以下代码：
+
+    {
+      "port": 1087,
+      "protocol": "http",
+      "settings": {
+        "userLevel": 8
+      },
+      "tag": "http"
+    },
+
+2.使用 系统代理.bat 开启系统代理
+也可以手动开启（Internet选项-连接-局域网设置-代理服务器 地址：127.0.0.1 端口：1087）
+
+注意：当您关闭v2ray进程时需同时关闭系统代理，否则将导致系统无法联网！
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
 
 
 这是一款适用于Windows系统的极简V2ray客户端（更像是一款极简V2Ray配置切换器）。
