@@ -1,0 +1,48 @@
+此脚本脱胎于以下项目中内置客户端：
+https://github.com/dylanbai8/Onekey_Caddy_PHP7_Sqlite3 （已无限期暂停更新）
+https://github.com/dylanbai8/V2Ray_h2-tls_Website_onekey （已无限期暂停更新）
+https://github.com/dylanbai8/V2Ray_ws-tls_Website_onekey （已无限期暂停更新）
+
+作者主页：
+https://github.com/dylanbai8
+项目地址：
+https://github.com/dylanbai8/c2ray
+
+c2ray教程：
+https://github.com/dylanbai8/c2ray_step_by_step
+v2ray教程：
+https://github.com/dylanbai8/v2ray_step_by_step
+
+
+这是一款适用于Windows系统的极简V2ray客户端（更像是一款极简V2Ray配置切换器）。
+全部由bat编写，安全、绿色、开源。所有bat脚本段落都配有中文说明，方便用户按照需要自行diy。
+
+使用该脚本，需要对v2ray配置文件有一定的了解。
+适合拥有长期稳定的路线或者私人自建机场的老鸟使用。软件将v2ray安装为系统服务，开机后台静默运行。
+
+以下为安装包中个目录文件说明：
+
+config-files（不用可删除）
+程序默认使用根目录下的config.json配置文件，如果你有多条线路，可以配置该目录用于线路切换。
+该目录存放v2ray配置文件，分本地配置文件和url远程类。
+远程url配置适合小圈内打包分享使用，方便云端随时更新配置。
+
+speed-test（不用可删除）
+该目录存放v2ray代理测速功能所必须的curl组件，程序来自官方。
+
+switchy-omega（不用可删除）
+chrome的socks5智能分流插件，程序来自官方。
+1.chrome打开chrome://extensions/ 2.右上角打开开发者模式 3.将crx插件拖入 4.导入bak文件
+
+update-tool（不用可删除）
+该目录存放在用于线升级v2ray功能所必须的的wget和7zip插件，程序来自官方。
+
+v2ray-windows-64（必须）
+该目录存放v2ray内核文件
+bat脚本仅支持了64位程序。如需使用32位，需要自行修改 便捷管理菜单.bat 和 升级内核.bat
+搜索v2ray-windows-64批量替换为v2ray-windows-32即可
+
+wv2ray-service.exe（开机自启动必须）
+用于将v2ray安装为系统服务，实现开机自启动和进程守护，程序来自官方。
+该文件实际为nssm.exe重命名为了wv2ray-service.exe，未做任何改动。
+官方开源地址：http://www.nssm.cc/

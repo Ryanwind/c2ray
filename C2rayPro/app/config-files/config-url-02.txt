@@ -1,0 +1,2 @@
+远程配置链接：
+https://raw.githubusercontent.com/Alvin9999/PAC/master/config.json
