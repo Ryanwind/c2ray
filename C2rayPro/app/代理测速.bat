@@ -14,6 +14,9 @@ color 0a
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 set test-file=http://cachefly.cachefly.net/100mb.test
+set file-size=100M
+set test-time=90
+
 set socks5-port=--socks5 127.0.0.1:1080
 
 set test-web=https://www.google.com
@@ -40,7 +43,7 @@ echo. 检测到 %exe-name% 已运行，开始测速。
 cd %curl-path%
 echo.
 echo. 测速文件：%test-file%
-echo. 文件大小：100M  测速时间：90秒
+echo. 文件大小：%file-size%  测速时间：%test-time%秒
 echo.
 echo. 按任意键开始测速。如需取消测速，请直接关闭此窗口。
 pause 1>nul 2>nul
@@ -49,7 +52,7 @@ echo. ===========================
 echo.
 del /a /f /s test.file 1>nul 2>nul
 
-curl.exe %test-file% -m 90 -o test.file %socks5-port%
+curl.exe %test-file% -m %test-time% -o test.file %socks5-port%
 
 del /a /f /s test.file 1>nul 2>nul
 echo.
@@ -61,6 +64,8 @@ echo.
 echo. ===========================
 echo.
 
+curl.exe -w "[test00] TCP handshake: %%{time_connect}, SSL handshake: %%{time_appconnect}\n" -so /dev/null %test-web% %socks5-port% 1>nul 2>nul
+
 curl.exe -w "[test01] TCP handshake: %%{time_connect}, SSL handshake: %%{time_appconnect}\n" -so /dev/null %test-web% %socks5-port%
 
 curl.exe -w "[test02] TCP handshake: %%{time_connect}, SSL handshake: %%{time_appconnect}\n" -so /dev/null %test-web% %socks5-port%
@@ -70,6 +75,10 @@ curl.exe -w "[test03] TCP handshake: %%{time_connect}, SSL handshake: %%{time_ap
 curl.exe -w "[test04] TCP handshake: %%{time_connect}, SSL handshake: %%{time_appconnect}\n" -so /dev/null %test-web% %socks5-port%
 
 curl.exe -w "[test05] TCP handshake: %%{time_connect}, SSL handshake: %%{time_appconnect}\n" -so /dev/null %test-web% %socks5-port%
+
+curl.exe -w "[test06] TCP handshake: %%{time_connect}, SSL handshake: %%{time_appconnect}\n" -so /dev/null %test-web% %socks5-port%
+
+curl.exe -w "[test07] TCP handshake: %%{time_connect}, SSL handshake: %%{time_appconnect}\n" -so /dev/null %test-web% %socks5-port%
 
 echo.
 echo. ===========================

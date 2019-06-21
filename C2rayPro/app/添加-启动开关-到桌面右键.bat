@@ -23,7 +23,7 @@ set bat-path=%cd%\启动或关闭[v2ray].bat
 set "bat-path=%bat-path:\=\\%"
 cd %root-path%
 
-set reg-path=v2ray-menu
+set reg-path=v2ray-on2off
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -36,14 +36,16 @@ MODE con: COLS=53 lines=9
 echo.
 echo.          ===== 添加-启动开关-到桌面右键 =====
 echo.
-echo.   --[1]--安装桌面右键快速启动菜单
-echo.   --[2]--删除桌面右键快速启动菜单
+echo.   --[1]--安装桌面右键菜单
+echo.   --[2]--删除桌面右键菜单
 echo.
 choice /c 12 /n /m "请选择【1-2】："
 
 echo %errorlevel%
 if %errorlevel% == 1 goto install
 if %errorlevel% == 2 goto uninstall
+
+
 
 ::卸载右键
 :uninstall
@@ -61,6 +63,8 @@ echo.
 echo. 卸载成功。
 ping localhost -n 2 1>nul 2>nul
 goto begin
+
+
 
 ::安装右键
 :install
@@ -81,3 +85,5 @@ echo.
 echo. 安装成功。
 ping localhost -n 2 1>nul 2>nul
 goto begin
+
+

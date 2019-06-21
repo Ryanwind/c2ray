@@ -5,7 +5,7 @@
 cd /d "%~dp0"
 
 ::命令行标题栏和文字颜色
-title -- 添加-启动开关-到桌面右键 --
+title -- 系统代理 --
 MODE con: COLS=43 lines=11
 color 0a
 

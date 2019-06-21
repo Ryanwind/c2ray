@@ -110,6 +110,8 @@ echo.
 echo. 按任意键启动%sc-name%服务（如果你已安装）。否则请直接关闭此窗口
 pause 1>nul 2>nul
 
+
+
 ::启动服务
 echo.
 echo. 正在启动 %sc-name% 服务。
@@ -123,3 +125,5 @@ echo.
 echo. %on2off%。5秒后自动关闭此窗口
 ping localhost -n 9 1>nul 2>nul
 exit
+
+

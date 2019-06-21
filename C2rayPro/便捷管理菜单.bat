@@ -14,13 +14,18 @@ color 0a
 ::在此处设置多线路配置文件的路径
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-set config-path=%cd%\config.json
+::根目录默认线路
+set config-file=%cd%\config.json
 
-set config-path-01=%cd%\app\config-files\config-01.json
-set config-path-02=%cd%\app\config-files\config-02.json
+::配置多条线路
+set config-root=app\config-files
+set config-path=%cd%\%config-root%
 
-set config-url-01=%cd%\app\config-files\config-url-01.txt
-set config-url-02=%cd%\app\config-files\config-url-02.txt
+set config-file-01=config-01.json
+set config-file-02=config-02.json
+
+set config-url-01=config-url-01.txt
+set config-url-02=config-url-02.txt
 
 set cmd-name=v2ray.exe
 set exe-name=wv2ray.exe
@@ -29,13 +34,14 @@ set exe-path=%cd%\app\v2ray-windows-64
 ::程序/服务名称（注意大小写）
 set sc-name=V2Ray
 set nssm-name=%cd%\app\wv2ray-service.exe
+
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 
 ::获取远程url内的配置文件
-for /f "delims=" %%i in ('find "http" "%config-url-01%"')do set config-url-a=%%i
-for /f "delims=" %%v in ('find "http" "%config-url-02%"')do set config-url-b=%%v
+for /f "delims=" %%i in ('find "http" "%config-path%\%config-url-01%"')do set config-url-a=%%i
+for /f "delims=" %%v in ('find "http" "%config-path%\%config-url-02%"')do set config-url-b=%%v
 
 ::检测内核文件是否存在
 if exist "%exe-path%\%exe-name%" ( goto begin ) else ( goto fail )
@@ -166,7 +172,7 @@ goto begin
 
 ::卸载主程序自启动服务
 :set_4
-MODE con: COLS=60 lines=15
+MODE con: COLS=70 lines=15
 sc stop %sc-name% 1>nul 2>nul
 taskkill /im %exe-name% /f 1>nul 2>nul
 cls
@@ -208,6 +214,7 @@ goto begin
 ::升级程序内核
 :set_6
 %cd%\app\升级内核.bat
+exit
 
 ::未检测到内核提示
 :fail
@@ -224,6 +231,7 @@ echo.
 echo. 按任意键开始安装 %sc-name% 内核。否则请直接关闭窗口
 pause 1>nul 2>nul
 %cd%\app\升级内核.bat
+exit
 
 ::加载线路选择菜单
 :setconfig
@@ -237,31 +245,29 @@ echo.         ===== 请选择你要使用的线路 =====
 echo.
 echo.   --[1]--默认线路（根目录下 config.json）
 echo.
-echo.   --[2]--本地线路一（config-01.json）
-echo.   --[3]--本地线路二（config-02.json）
+echo.   --[2]--本地线路一（%config-file-01%）
+echo.   --[3]--本地线路二（%config-file-02%）
 echo.
-echo.   --[4]--远程线路一（config-url-01.txt）
-echo.   --[5]--远程线路二（config-url-02.txt）
+echo.   --[4]--远程线路一（%config-url-01%）
+echo.   --[5]--远程线路二（%config-url-02%）
 echo.
 echo.   --注意--你需要先行配置对应线路文件
-echo.   --配置文件路径 --\app\config-files\
+echo.   --配置文件路径 --\%config-root%\
 echo.
 choice /c 12345 /n /m "请选择【1-5】："
 
 echo %errorlevel%
 
-if %errorlevel% == 1 set jsonurl=%config-path%
+if %errorlevel% == 1 set jsonurl=%config-file%
 
-if %errorlevel% == 2 set jsonurl=%config-path-01%
-if %errorlevel% == 3 set jsonurl=%config-path-02%
+if %errorlevel% == 2 set jsonurl=%config-path%\%config-file-01%
+if %errorlevel% == 3 set jsonurl=%config-path%\%config-file-02%
 
 if %errorlevel% == 4 set jsonurl=%config-url-a%
 if %errorlevel% == 5 set jsonurl=%config-url-b%
 
-
-
 cls
-MODE con: COLS=80 lines=10
+MODE con: COLS=90 lines=10
 echo.
 echo.
 echo.  ===============================
@@ -272,3 +278,6 @@ echo.
 echo.  ===============================
 echo.
 ping localhost -n 5 1>nul 2>nul
+goto :eof
+
+
